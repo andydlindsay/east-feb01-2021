@@ -1,12 +1,12 @@
 # W05D02 - Database Design
 
 ### To Do
-- [ ] Primary Keys/Foreign Keys
-- [ ] Naming Conventions
-- [ ] Data Types
-- [ ] Relationship Types
-- [ ] Design Concepts
-- [ ] Entity Relationship Diagrams
+- [x] Primary Keys/Foreign Keys
+- [x] Naming Conventions
+- [x] Data Types
+- [x] Relationship Types
+- [x] Design Concepts
+- [x] Entity Relationship Diagrams
 - [ ] Breakout: Convert 2 Spreadsheets [15 mins]
 - [ ] Student Suggestion ERD(s)
 
