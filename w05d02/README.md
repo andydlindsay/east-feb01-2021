@@ -7,8 +7,8 @@
 - [x] Relationship Types
 - [x] Design Concepts
 - [x] Entity Relationship Diagrams
-- [ ] Breakout: Convert 2 Spreadsheets [15 mins]
-- [ ] Student Suggestion ERD(s)
+- [x] Breakout: Convert 2 Spreadsheets [15 mins]
+- [x] Student Suggestion ERD
 
 ### Primary Keys/Foreign Keys
 * A way of uniquely identifying a record (cannot be null)
