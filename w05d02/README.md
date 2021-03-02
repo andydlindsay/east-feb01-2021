@@ -10,71 +10,59 @@
 - [x] Breakout: Convert 2 Spreadsheets [15 mins]
 - [x] Student Suggestion ERD
 
-### Primary Keys/Foreign Keys
-* A way of uniquely identifying a record (cannot be null)
-* auto-incrementing integer
-* email
-* FK is they MUST be the same type
-* stay away from composite keys
+### Primary Key
 
-`andy; DROP TABLE users;`
+- A way of uniquely identifying a particular record within a table 
+- Must be unique (within the table) and can never be null
+- The usual data type is auto-incrementing integer (`INTEGER` or `BIGINT`)
+- A Primary Key stored in another table is known as a `Foreign Key`
+- The Primary Key and Foreign Key **MUST** be the same data type
 
 ### Naming Conventions
-* field/table names should snake_case SELECT SeleCT select 'space name'
-* table names are always plural
-* `id` for primary keys
-* foreign table singular plus `_id` `user_id`
+
+- Table and field names are written in `snake_case`
+- Table names are always pluralized
+- The primary key for each table will simply be called `id`
+- A foreign key is made up of the singular of the primary keys table and the suffix `_id` (eg. `user_id` is the foreign key for the `id` field in the `users` table)
 
 ### Data Types
-* Much more of a concern in the old days ~10 years ago
-* When a record is created, even if the field is null, the db sets aside space
-* integer, varchar, boolean
-* phone numbers? postal codes? 'H0H 0H0' 90210 00210 555 555 5555 +1 (778)
+
+- Each field in a table **must** have a data type defined for it
+- The data type tells the database how much room to set aside to store the value _and_ allows the database to perform type validation on data before insertion (to protect the data integrity of the table)
+- Choosing the perfect data type is less of a concern nowadays because memory is now comparably cheap
 
 ### Relationship Types
-* One-to-One - 1 record in the first table is related to only 1 record in the second
-* One-to-Many/Many-to-One - 1 record in the 1st table is related to 1 or more records in the 2nd
-* Many-to-Many - 1 or more records in the 1st is related to 1 or more records in the 2nd, requires a junction/join/bridge table
+
+- **One-to-One**: One record in the first table is related to one (and only one) record in the second table
+- **One-to-Many**: One record in the first table is related to one or more records in the second table
+- **Many-to-Many**: One or more records in the first table are related to one or more records in the second table
+
+- It could be argued that there is really only one relationship type: _One-to-Many_ as One-to-One's are extremely rare and Many-to-Many's are implemented using two _One-to-Many's_
 
 ### Design Concepts
-* Make fields required - the record in its initial state
-* Default values - use intelligent default values to speed up inserts CURRENT_DATE, active boolean field `true`
-* Calculated fields - field whose value can be derived from one or more other fields
-`first_name` and `last_name` `full_name`
-* Normalization - is to reduce redundancy and get to single source of truth
-SUM(item.price)
-for..of
-reduce 100x slower
-* Pull repeated values out of the table a lookup table
-1 Toronto toronto TOrnato
-2 Montreal
-3 Ottawa
-* Try not to delete anything DELETE, `active` boolean
 
-### ERD's
-* Entity Relationship Diagram
-* How we lay out tables and the relationships between them
+- Make fields required based on the records state upon initial creation (remember that additional data can be added to a record after it has been created)
+- Intelligent default values can be set for fields (such as the current timestamp for a `created_on` field)
+- Don't use calculated fields (a field that can be derived from one or more other fields, such as `full_name` is a combination of `first_name` and `last_name`)
+- Pull repeated values out to their own table and make reference to them with a foreign key
+- Try not to delete anything (use a boolean flag instead to mark a record as active or inactive)
+- Consider using a `type` field instead of using two (or more) tables to store very similar data (eg. create an `orders` table with an `order_type` field instead of a `purchase_orders` and a `sales_orders` table)
 
-ALTER TABLE
-UPDATE
+### Entity Relationship Diagram (ERD)
 
+- A visual depiction of the database tables and how they are related to each other
+- Extremely useful for reasoning about how the database should be structured
+- Can be created using pen and paper, a whiteboard, or using an online application
 
 ### Breakout: Convert Two Spreadsheets
 - [Gist with instruction](https://gist.github.com/andydlindsay/20e7305e853bad7b587f294b054cf8de)
 
+### Student Suggestion: Spotify
 
+![Spotify](https://raw.githubusercontent.com/andydlindsay/east-feb01-2021/master/w05d02/spotify.png)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-# 
+### Useful Links
+* [Database Normalization](https://en.wikipedia.org/wiki/Database_normalization)
+* [Postgres Data Types](http://www.postgresqltutorial.com/postgresql-data-types/)
+* [Relationship Types](http://etutorials.org/SQL/Database+design+for+mere+mortals/Part+II+The+Design+Process/Chapter+10.+Table+Relationships/Types+of+Relationships/)
+* [draw.io (online ERD)](https://www.draw.io/)
